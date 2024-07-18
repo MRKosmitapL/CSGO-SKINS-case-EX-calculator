@@ -15,11 +15,23 @@ if (sectionListElement) {
     for(var i = 0;i<listItemContents.length;i++)
         {
             var splittedItem = listItemContents[i].split('\n')
-            var odds = (parseFloat(splittedItem[3].substring(splittedItem[3].length - 1, splittedItem[3].lastIndexOf(' ')))/100).toFixed(5)
-            //console.log(odds)
-            var price = parseFloat(splittedItem[2])
-            //console.log(price)
-            expectedValue += odds*price
+            if(splittedItem.length == 2)
+            {
+                var odds = (parseFloat(splittedItem[1].substring(splittedItem[1].length - 1, splittedItem[1].lastIndexOf(' ')))/100).toFixed(5)
+                //console.log(odds)
+                var price = parseFloat(splittedItem[0])
+                //console.log(price)
+                expectedValue += odds*price
+               console.log(splittedItem)
+            }
+            else
+            {
+                var odds = (parseFloat(splittedItem[3].substring(splittedItem[3].length - 1, splittedItem[3].lastIndexOf(' ')))/100).toFixed(5)
+                //console.log(odds)
+                var price = parseFloat(splittedItem[2])
+                //console.log(price)
+                expectedValue += odds*price
+            }
         }
         expectedValueFinal += expectedValue
     console.log("expected value: "+ expectedValue.toFixed(2))
